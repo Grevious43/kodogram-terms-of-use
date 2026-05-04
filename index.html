@@ -42,6 +42,15 @@
             margin-bottom: 24px;
         }
 
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
         .badge {
             display: inline-block;
             background: var(--accent-soft);
@@ -50,7 +59,42 @@
             padding: 6px 12px;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 14px;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8faff;
+            border: 1px solid var(--line);
+            padding: 8px;
+            border-radius: 14px;
+        }
+
+        .lang-btn {
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--text);
+            border-radius: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(20, 31, 56, 0.08);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
         h1, h2 {
@@ -107,34 +151,68 @@
             font-size: 14px;
             color: var(--muted);
         }
+
+        @media (max-width: 700px) {
+            .hero {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .hero-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .lang-switch {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
     <main class="wrap">
         <section class="hero">
-            <div class="badge">Kodogram Terms of Use</div>
-            <h1>Kodogram Kullanım Koşulları</h1>
-            <p>
+            <div class="hero-top">
+                <div class="badge" data-i18n="badge">Kodogram Terms of Use</div>
+
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="tr">
+                        <span>🇹🇷</span>
+                        <span>Türkçe</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <span>🇬🇧</span>
+                        <span>English</span>
+                    </button>
+                </div>
+            </div>
+
+            <h1 data-i18n="hero_title">Kodogram Kullanım Koşulları</h1>
+            <p data-i18n="hero_desc">
                 Bu Kullanım Koşulları, Kodogram uygulamasına erişen ve uygulamayı kullanan tüm kullanıcılar için
                 geçerli kuralları, hakları, sorumlulukları ve kullanım sınırlarını açıklar.
             </p>
             <div class="meta">
-                Son güncelleme: 22 Mart 2026<br />
-                Sürüm: 2026.03
+                <span data-i18n="meta_update">Son güncelleme: 22 Mart 2026</span><br />
+                <span data-i18n="meta_version">Sürüm: 2026.03</span>
             </div>
         </section>
 
         <section class="section">
-            <h2>1. Kabul</h2>
-            <p>
+            <h2 data-i18n="s1_title">1. Kabul</h2>
+            <p data-i18n="s1_p1">
                 Kodogram’a erişerek, hesap oluşturarak veya uygulamayı kullanmaya devam ederek bu Kullanım Koşulları’nı
                 ve yürürlükteki Gizlilik Politikası’nı kabul etmiş olursunuz. Bu koşulları kabul etmiyorsanız uygulamayı kullanmamalısınız.
             </p>
         </section>
 
         <section class="section">
-            <h2>2. Hizmetin Kapsamı</h2>
-            <p>
+            <h2 data-i18n="s2_title">2. Hizmetin Kapsamı</h2>
+            <p data-i18n="s2_p1">
                 Kodogram; kod paylaşımı, öğrenme içerikleri, forum etkileşimi, kullanıcı profilleri, bildirimler,
                 destek talepleri, topluluk etkileşimi ve yönetim özellikleri sunan bir yazılım platformudur.
                 Hizmet kapsamı zaman içinde güncellenebilir, genişletilebilir veya daraltılabilir.
@@ -142,66 +220,66 @@
         </section>
 
         <section class="section">
-            <h2>3. Hesap Sorumluluğu</h2>
-            <p>Kullanıcılar hesap oluştururken doğru, güncel ve kendilerine ait bilgiler sunmakla yükümlüdür.</p>
+            <h2 data-i18n="s3_title">3. Hesap Sorumluluğu</h2>
+            <p data-i18n="s3_desc">Kullanıcılar hesap oluştururken doğru, güncel ve kendilerine ait bilgiler sunmakla yükümlüdür.</p>
             <ul>
-                <li>Hesap güvenliğinin korunması kullanıcı sorumluluğundadır.</li>
-                <li>Şifrenin ve giriş bilgilerinin üçüncü kişilerle paylaşılmaması gerekir.</li>
-                <li>Hesap üzerinden yapılan işlemlerden kullanıcı sorumlu olabilir.</li>
-                <li>Kullanıcı adı sistem kurallarına, topluluk güvenliğine, rezervli isim politikasına ve genel kamu düzenine aykırı olamaz.</li>
-                <li>Kodogram, teknik veya operasyonel nedenlerle otomatik kullanıcı adı üretebilir; kullanıcı adları belirli kurallara tabi olarak sonradan değiştirilebilir, sınırlandırılabilir veya reddedilebilir.</li>
-                <li>Sosyal giriş yöntemleriyle açılan hesaplarda bazı profil alanları sağlayıcıdan alınan verilerle önceden doldurulabilir.</li>
+                <li data-i18n="s3_li1">Hesap güvenliğinin korunması kullanıcı sorumluluğundadır.</li>
+                <li data-i18n="s3_li2">Şifrenin ve giriş bilgilerinin üçüncü kişilerle paylaşılmaması gerekir.</li>
+                <li data-i18n="s3_li3">Hesap üzerinden yapılan işlemlerden kullanıcı sorumlu olabilir.</li>
+                <li data-i18n="s3_li4">Kullanıcı adı sistem kurallarına, topluluk güvenliğine, rezervli isim politikasına ve genel kamu düzenine aykırı olamaz.</li>
+                <li data-i18n="s3_li5">Kodogram, teknik veya operasyonel nedenlerle otomatik kullanıcı adı üretebilir; kullanıcı adları belirli kurallara tabi olarak sonradan değiştirilebilir, sınırlandırılabilir veya reddedilebilir.</li>
+                <li data-i18n="s3_li6">Sosyal giriş yöntemleriyle açılan hesaplarda bazı profil alanları sağlayıcıdan alınan verilerle önceden doldurulabilir.</li>
             </ul>
         </section>
 
         <section class="section">
-            <h2>4. Kabul Edilmeyen Kullanımlar</h2>
-            <p>Aşağıdaki davranışlar Kodogram’da yasaktır:</p>
+            <h2 data-i18n="s4_title">4. Kabul Edilmeyen Kullanımlar</h2>
+            <p data-i18n="s4_desc">Aşağıdaki davranışlar Kodogram’da yasaktır:</p>
             <ul>
-                <li>Hakaret, tehdit, taciz, nefret söylemi veya ayrımcı içerik paylaşmak</li>
-                <li>Spam, yanıltıcı, dolandırıcılık amaçlı veya sahte içerik üretmek</li>
-                <li>Başkalarının hesaplarına yetkisiz erişmeye çalışmak</li>
-                <li>Kötü amaçlı kod, zararlı bağlantı veya güvenlik ihlali oluşturacak içerik paylaşmak</li>
-                <li>Telif hakkını, marka hakkını veya üçüncü kişi haklarını ihlal eden içerik yüklemek</li>
-                <li>Platformun teknik işleyişini bozacak, aşırı yükleyecek veya manipüle edecek işlemler yapmak</li>
-                <li>Forum, paylaşım, öğrenme veya destek alanlarını kötüye kullanmak</li>
-                <li>Rezervli kullanıcı adlarını, yönetici kimliğini veya başkasını taklit edecek unsurları kullanmak</li>
-                <li>Rapor, destek talebi veya moderasyon araçlarını kötü niyetli biçimde istismar etmek</li>
+                <li data-i18n="s4_li1">Hakaret, tehdit, taciz, nefret söylemi veya ayrımcı içerik paylaşmak</li>
+                <li data-i18n="s4_li2">Spam, yanıltıcı, dolandırıcılık amaçlı veya sahte içerik üretmek</li>
+                <li data-i18n="s4_li3">Başkalarının hesaplarına yetkisiz erişmeye çalışmak</li>
+                <li data-i18n="s4_li4">Kötü amaçlı kod, zararlı bağlantı veya güvenlik ihlali oluşturacak içerik paylaşmak</li>
+                <li data-i18n="s4_li5">Telif hakkını, marka hakkını veya üçüncü kişi haklarını ihlal eden içerik yüklemek</li>
+                <li data-i18n="s4_li6">Platformun teknik işleyişini bozacak, aşırı yükleyecek veya manipüle edecek işlemler yapmak</li>
+                <li data-i18n="s4_li7">Forum, paylaşım, öğrenme veya destek alanlarını kötüye kullanmak</li>
+                <li data-i18n="s4_li8">Rezervli kullanıcı adlarını, yönetici kimliğini veya başkasını taklit edecek unsurları kullanmak</li>
+                <li data-i18n="s4_li9">Rapor, destek talebi veya moderasyon araçlarını kötü niyetli biçimde istismar etmek</li>
             </ul>
         </section>
 
         <section class="section">
-            <h2>5. Kullanıcı İçerikleri</h2>
-            <p>
+            <h2 data-i18n="s5_title">5. Kullanıcı İçerikleri</h2>
+            <p data-i18n="s5_p1">
                 Kullanıcılar, paylaştıkları kodlardan, forum başlıklarından, yorumlardan, raporlardan, destek içeriklerinden
                 ve diğer içeriklerden kendileri sorumludur. Kodogram, topluluk güvenliği ve platform bütünlüğü amacıyla
                 içerikleri inceleme, kaldırma, kısıtlama, arşivleme veya görünürlüğünü azaltma hakkını saklı tutar.
             </p>
-            <p>
+            <p data-i18n="s5_p2">
                 Kullanıcı, Kodogram üzerinde paylaştığı içeriklerin platform içinde görüntülenmesine, çoğaltılmasına,
                 teknik olarak işlenmesine ve sunulmasına dünya çapında, ücretsiz ve sınırlı bir lisans verdiğini kabul eder.
             </p>
-            <p>
+            <p data-i18n="s5_p3">
                 Kullanıcı, uygulama üzerinde paylaştığı içeriklerin hukuka uygun olduğunu ve üçüncü taraf haklarını ihlal etmediğini beyan eder.
             </p>
         </section>
 
         <section class="section">
-            <h2>6. Moderasyon ve Yönetim Yetkileri</h2>
-            <p>
+            <h2 data-i18n="s6_title">6. Moderasyon ve Yönetim Yetkileri</h2>
+            <p data-i18n="s6_p1">
                 Kodogram, topluluk güvenliğini sağlamak için kullanıcı hesaplarını inceleyebilir, içerikleri kaldırabilir,
                 görünürlüğünü azaltabilir, gönderileri raporlayabilir, forum başlıklarını düzenleyebilir,
                 destek taleplerini inceleyebilir ve hesapları geçici veya kalıcı olarak askıya alabilir.
             </p>
-            <p>
+            <p data-i18n="s6_p2">
                 Yönetici işlemleri; güvenlik, yasal gereklilik, kötüye kullanım önleme, topluluk düzeni,
                 destek süreçleri, teknik operasyon ve hizmet kalitesi amaçlarıyla yapılabilir.
             </p>
         </section>
 
         <section class="section">
-            <h2>7. Hesap Askıya Alma ve Sonlandırma</h2>
-            <p>
+            <h2 data-i18n="s7_title">7. Hesap Askıya Alma ve Sonlandırma</h2>
+            <p data-i18n="s7_p1">
                 Kodogram, bu koşulların ihlali, güvenlik riski, sahtecilik, spam, kötüye kullanım,
                 moderasyon kararları veya hukuki zorunluluk halinde hesabı askıya alma,
                 erişimi sınırlandırma veya kalıcı olarak kapatma hakkına sahiptir.
@@ -209,42 +287,42 @@
         </section>
 
         <section class="section">
-            <h2>8. Gizlilik ve Veri İşleme</h2>
-            <p>
+            <h2 data-i18n="s8_title">8. Gizlilik ve Veri İşleme</h2>
+            <p data-i18n="s8_p1">
                 Kodogram’ın kullanıcı verilerini nasıl topladığı, kullandığı ve sakladığı Gizlilik Politikası’nda açıklanır.
                 Uygulamanın kullanımı sırasında toplanan kişisel veriler ilgili gizlilik metnine tabi olarak işlenir.
             </p>
-            <p>
+            <p data-i18n="s8_p2">
                 Uygulamayı kullanarak, geçerli Gizlilik Politikası’nda belirtilen veri işleme çerçevesini kabul etmiş olursunuz.
             </p>
         </section>
 
         <section class="section">
-            <h2>9. Üçüncü Taraf Servisler</h2>
-            <p>
+            <h2 data-i18n="s9_title">9. Üçüncü Taraf Servisler</h2>
+            <p data-i18n="s9_p1">
                 Kodogram, hizmetin sunulması için üçüncü taraf servislerden yararlanabilir. Bunlar arasında özellikle
                 Google Firebase, Firebase Authentication, Cloud Firestore, Firebase Cloud Messaging,
                 Firebase Cloud Functions, Apple Sign-In ve Google Sign-In gibi altyapılar bulunabilir.
             </p>
-            <p>
+            <p data-i18n="s9_p2">
                 Bu servisler kendi koşullarına ve gizlilik politikalarına göre de veri işleyebilir.
             </p>
         </section>
 
         <section class="section">
-            <h2>10. Fikri Mülkiyet</h2>
-            <p>
+            <h2 data-i18n="s10_title">10. Fikri Mülkiyet</h2>
+            <p data-i18n="s10_p1">
                 Uygulamanın tasarımı, markası, görsel kimliği, yazılım altyapısı, arayüzleri ve platforma ait özgün içerikler,
                 aksi belirtilmedikçe SS Development ve Kodogram’a aittir veya lisanslı olarak kullanılmaktadır.
             </p>
-            <p>
+            <p data-i18n="s10_p2">
                 Kullanıcılar, Kodogram markasını veya uygulamaya ait özgün unsurları izinsiz çoğaltamaz, dağıtamaz veya ticari biçimde kullanamaz.
             </p>
         </section>
 
         <section class="section">
-            <h2>11. Hizmette Değişiklik</h2>
-            <p>
+            <h2 data-i18n="s11_title">11. Hizmette Değişiklik</h2>
+            <p data-i18n="s11_p1">
                 Kodogram; uygulamanın herhangi bir özelliğini önceden bildirim yaparak veya yapmaksızın değiştirebilir,
                 askıya alabilir, kaldırabilir veya güncelleyebilir. Bu durum özellikler, erişim biçimleri,
                 üyelik akışları, moderasyon politikaları ve yönetim araçları için de geçerlidir.
@@ -252,8 +330,8 @@
         </section>
 
         <section class="section">
-            <h2>12. Sorumluluğun Sınırlandırılması</h2>
-            <p>
+            <h2 data-i18n="s12_title">12. Sorumluluğun Sınırlandırılması</h2>
+            <p data-i18n="s12_p1">
                 Kodogram, hizmeti mevcut haliyle sunar. Uygulamanın kesintisiz, hatasız veya tüm kullanıcı beklentilerini karşılayacak şekilde
                 çalışacağı garanti edilmez. Teknik sorunlar, veri kaybı, üçüncü taraf servis kesintileri,
                 kullanıcı içerikleri, bildirim gecikmeleri veya dış servis kaynaklı aksaklıklardan doğan dolaylı zararlardan,
@@ -262,28 +340,28 @@
         </section>
 
         <section class="section">
-            <h2>13. Hesap ve Veri Silme Talepleri</h2>
-            <p>
+            <h2 data-i18n="s13_title">13. Hesap ve Veri Silme Talepleri</h2>
+            <p data-i18n="s13_p1">
                 Kullanıcılar hesaplarının kapatılmasını ve uygun durumlarda ilişkili verilerinin silinmesini talep edebilir.
                 Böyle talepler için aşağıdaki iletişim adresi kullanılmalıdır.
             </p>
-            <p>
+            <p data-i18n="s13_p2">
                 Bazı veriler; yasal yükümlülükler, güvenlik kayıtları, dolandırıcılık önleme, moderasyon geçmişi,
                 destek kayıtları veya uyuşmazlık çözümü nedeniyle belirli bir süre daha saklanabilir.
             </p>
         </section>
 
         <section class="section">
-            <h2>14. Koşullardaki Değişiklikler</h2>
-            <p>
+            <h2 data-i18n="s14_title">14. Koşullardaki Değişiklikler</h2>
+            <p data-i18n="s14_p1">
                 Kodogram bu Kullanım Koşulları’nı zaman zaman güncelleyebilir. Önemli değişiklikler uygulama içinde,
                 ilgili bağlantılarda veya gerekli görüldüğünde yeniden onay süreciyle kullanıcılara bildirilebilir.
             </p>
         </section>
 
         <section class="section">
-            <h2>15. İletişim</h2>
-            <p>
+            <h2 data-i18n="s15_title">15. İletişim</h2>
+            <p data-i18n="s15_p1">
                 Kullanım koşulları, hesap işlemleri, moderasyon kararları veya platform kullanımıyla ilgili sorular için bizimle şu adresten iletişime geçebilirsiniz:
             </p>
             <p>
@@ -291,9 +369,193 @@
             </p>
         </section>
 
-        <p class="foot">
-            SS Development © 2026 Kodogram
-        </p>
+        <p class="foot" data-i18n="foot">SS Development © 2026 Kodogram</p>
     </main>
+
+    <script>
+        const translations = {
+            tr: {
+                page_title: "Kodogram Kullanım Koşulları",
+                badge: "Kodogram Terms of Use",
+                hero_title: "Kodogram Kullanım Koşulları",
+                hero_desc: "Bu Kullanım Koşulları, Kodogram uygulamasına erişen ve uygulamayı kullanan tüm kullanıcılar için geçerli kuralları, hakları, sorumlulukları ve kullanım sınırlarını açıklar.",
+                meta_update: "Son güncelleme: 22 Mart 2026",
+                meta_version: "Sürüm: 2026.03",
+
+                s1_title: "1. Kabul",
+                s1_p1: "Kodogram’a erişerek, hesap oluşturarak veya uygulamayı kullanmaya devam ederek bu Kullanım Koşulları’nı ve yürürlükteki Gizlilik Politikası’nı kabul etmiş olursunuz. Bu koşulları kabul etmiyorsanız uygulamayı kullanmamalısınız.",
+
+                s2_title: "2. Hizmetin Kapsamı",
+                s2_p1: "Kodogram; kod paylaşımı, öğrenme içerikleri, forum etkileşimi, kullanıcı profilleri, bildirimler, destek talepleri, topluluk etkileşimi ve yönetim özellikleri sunan bir yazılım platformudur. Hizmet kapsamı zaman içinde güncellenebilir, genişletilebilir veya daraltılabilir.",
+
+                s3_title: "3. Hesap Sorumluluğu",
+                s3_desc: "Kullanıcılar hesap oluştururken doğru, güncel ve kendilerine ait bilgiler sunmakla yükümlüdür.",
+                s3_li1: "Hesap güvenliğinin korunması kullanıcı sorumluluğundadır.",
+                s3_li2: "Şifrenin ve giriş bilgilerinin üçüncü kişilerle paylaşılmaması gerekir.",
+                s3_li3: "Hesap üzerinden yapılan işlemlerden kullanıcı sorumlu olabilir.",
+                s3_li4: "Kullanıcı adı sistem kurallarına, topluluk güvenliğine, rezervli isim politikasına ve genel kamu düzenine aykırı olamaz.",
+                s3_li5: "Kodogram, teknik veya operasyonel nedenlerle otomatik kullanıcı adı üretebilir; kullanıcı adları belirli kurallara tabi olarak sonradan değiştirilebilir, sınırlandırılabilir veya reddedilebilir.",
+                s3_li6: "Sosyal giriş yöntemleriyle açılan hesaplarda bazı profil alanları sağlayıcıdan alınan verilerle önceden doldurulabilir.",
+
+                s4_title: "4. Kabul Edilmeyen Kullanımlar",
+                s4_desc: "Aşağıdaki davranışlar Kodogram’da yasaktır:",
+                s4_li1: "Hakaret, tehdit, taciz, nefret söylemi veya ayrımcı içerik paylaşmak",
+                s4_li2: "Spam, yanıltıcı, dolandırıcılık amaçlı veya sahte içerik üretmek",
+                s4_li3: "Başkalarının hesaplarına yetkisiz erişmeye çalışmak",
+                s4_li4: "Kötü amaçlı kod, zararlı bağlantı veya güvenlik ihlali oluşturacak içerik paylaşmak",
+                s4_li5: "Telif hakkını, marka hakkını veya üçüncü kişi haklarını ihlal eden içerik yüklemek",
+                s4_li6: "Platformun teknik işleyişini bozacak, aşırı yükleyecek veya manipüle edecek işlemler yapmak",
+                s4_li7: "Forum, paylaşım, öğrenme veya destek alanlarını kötüye kullanmak",
+                s4_li8: "Rezervli kullanıcı adlarını, yönetici kimliğini veya başkasını taklit edecek unsurları kullanmak",
+                s4_li9: "Rapor, destek talebi veya moderasyon araçlarını kötü niyetli biçimde istismar etmek",
+
+                s5_title: "5. Kullanıcı İçerikleri",
+                s5_p1: "Kullanıcılar, paylaştıkları kodlardan, forum başlıklarından, yorumlardan, raporlardan, destek içeriklerinden ve diğer içeriklerden kendileri sorumludur. Kodogram, topluluk güvenliği ve platform bütünlüğü amacıyla içerikleri inceleme, kaldırma, kısıtlama, arşivleme veya görünürlüğünü azaltma hakkını saklı tutar.",
+                s5_p2: "Kullanıcı, Kodogram üzerinde paylaştığı içeriklerin platform içinde görüntülenmesine, çoğaltılmasına, teknik olarak işlenmesine ve sunulmasına dünya çapında, ücretsiz ve sınırlı bir lisans verdiğini kabul eder.",
+                s5_p3: "Kullanıcı, uygulama üzerinde paylaştığı içeriklerin hukuka uygun olduğunu ve üçüncü taraf haklarını ihlal etmediğini beyan eder.",
+
+                s6_title: "6. Moderasyon ve Yönetim Yetkileri",
+                s6_p1: "Kodogram, topluluk güvenliğini sağlamak için kullanıcı hesaplarını inceleyebilir, içerikleri kaldırabilir, görünürlüğünü azaltabilir, gönderileri raporlayabilir, forum başlıklarını düzenleyebilir, destek taleplerini inceleyebilir ve hesapları geçici veya kalıcı olarak askıya alabilir.",
+                s6_p2: "Yönetici işlemleri; güvenlik, yasal gereklilik, kötüye kullanım önleme, topluluk düzeni, destek süreçleri, teknik operasyon ve hizmet kalitesi amaçlarıyla yapılabilir.",
+
+                s7_title: "7. Hesap Askıya Alma ve Sonlandırma",
+                s7_p1: "Kodogram, bu koşulların ihlali, güvenlik riski, sahtecilik, spam, kötüye kullanım, moderasyon kararları veya hukuki zorunluluk halinde hesabı askıya alma, erişimi sınırlandırma veya kalıcı olarak kapatma hakkına sahiptir.",
+
+                s8_title: "8. Gizlilik ve Veri İşleme",
+                s8_p1: "Kodogram’ın kullanıcı verilerini nasıl topladığı, kullandığı ve sakladığı Gizlilik Politikası’nda açıklanır. Uygulamanın kullanımı sırasında toplanan kişisel veriler ilgili gizlilik metnine tabi olarak işlenir.",
+                s8_p2: "Uygulamayı kullanarak, geçerli Gizlilik Politikası’nda belirtilen veri işleme çerçevesini kabul etmiş olursunuz.",
+
+                s9_title: "9. Üçüncü Taraf Servisler",
+                s9_p1: "Kodogram, hizmetin sunulması için üçüncü taraf servislerden yararlanabilir. Bunlar arasında özellikle Google Firebase, Firebase Authentication, Cloud Firestore, Firebase Cloud Messaging, Firebase Cloud Functions, Apple Sign-In ve Google Sign-In gibi altyapılar bulunabilir.",
+                s9_p2: "Bu servisler kendi koşullarına ve gizlilik politikalarına göre de veri işleyebilir.",
+
+                s10_title: "10. Fikri Mülkiyet",
+                s10_p1: "Uygulamanın tasarımı, markası, görsel kimliği, yazılım altyapısı, arayüzleri ve platforma ait özgün içerikler, aksi belirtilmedikçe SS Development ve Kodogram’a aittir veya lisanslı olarak kullanılmaktadır.",
+                s10_p2: "Kullanıcılar, Kodogram markasını veya uygulamaya ait özgün unsurları izinsiz çoğaltamaz, dağıtamaz veya ticari biçimde kullanamaz.",
+
+                s11_title: "11. Hizmette Değişiklik",
+                s11_p1: "Kodogram; uygulamanın herhangi bir özelliğini önceden bildirim yaparak veya yapmaksızın değiştirebilir, askıya alabilir, kaldırabilir veya güncelleyebilir. Bu durum özellikler, erişim biçimleri, üyelik akışları, moderasyon politikaları ve yönetim araçları için de geçerlidir.",
+
+                s12_title: "12. Sorumluluğun Sınırlandırılması",
+                s12_p1: "Kodogram, hizmeti mevcut haliyle sunar. Uygulamanın kesintisiz, hatasız veya tüm kullanıcı beklentilerini karşılayacak şekilde çalışacağı garanti edilmez. Teknik sorunlar, veri kaybı, üçüncü taraf servis kesintileri, kullanıcı içerikleri, bildirim gecikmeleri veya dış servis kaynaklı aksaklıklardan doğan dolaylı zararlardan, yürürlükteki hukukun izin verdiği ölçüde sınırlı sorumluluk geçerli olabilir.",
+
+                s13_title: "13. Hesap ve Veri Silme Talepleri",
+                s13_p1: "Kullanıcılar hesaplarının kapatılmasını ve uygun durumlarda ilişkili verilerinin silinmesini talep edebilir. Böyle talepler için aşağıdaki iletişim adresi kullanılmalıdır.",
+                s13_p2: "Bazı veriler; yasal yükümlülükler, güvenlik kayıtları, dolandırıcılık önleme, moderasyon geçmişi, destek kayıtları veya uyuşmazlık çözümü nedeniyle belirli bir süre daha saklanabilir.",
+
+                s14_title: "14. Koşullardaki Değişiklikler",
+                s14_p1: "Kodogram bu Kullanım Koşulları’nı zaman zaman güncelleyebilir. Önemli değişiklikler uygulama içinde, ilgili bağlantılarda veya gerekli görüldüğünde yeniden onay süreciyle kullanıcılara bildirilebilir.",
+
+                s15_title: "15. İletişim",
+                s15_p1: "Kullanım koşulları, hesap işlemleri, moderasyon kararları veya platform kullanımıyla ilgili sorular için bizimle şu adresten iletişime geçebilirsiniz:",
+
+                foot: "SS Development © 2026 Kodogram"
+            },
+
+            en: {
+                page_title: "Kodogram Terms of Use",
+                badge: "Kodogram Terms of Use",
+                hero_title: "Kodogram Terms of Use",
+                hero_desc: "These Terms of Use explain the rules, rights, responsibilities, and limits of use that apply to all users who access and use the Kodogram application.",
+                meta_update: "Last updated: March 22, 2026",
+                meta_version: "Version: 2026.03",
+
+                s1_title: "1. Acceptance",
+                s1_p1: "By accessing Kodogram, creating an account, or continuing to use the application, you agree to these Terms of Use and the current Privacy Policy. If you do not agree to these terms, you should not use the application.",
+
+                s2_title: "2. Scope of the Service",
+                s2_p1: "Kodogram is a software platform that provides code sharing, learning content, forum interaction, user profiles, notifications, support requests, community interaction, and management features. The scope of the service may be updated, expanded, or reduced over time.",
+
+                s3_title: "3. Account Responsibility",
+                s3_desc: "Users are responsible for providing accurate, up-to-date, and personally valid information when creating an account.",
+                s3_li1: "Protecting account security is the user's responsibility.",
+                s3_li2: "Passwords and login credentials must not be shared with third parties.",
+                s3_li3: "The user may be responsible for actions taken through the account.",
+                s3_li4: "Usernames must not violate system rules, community safety, reserved-name policy, or public order.",
+                s3_li5: "Kodogram may automatically generate usernames for technical or operational reasons; usernames may later be changed, restricted, or rejected according to certain rules.",
+                s3_li6: "For accounts created through social login methods, some profile fields may be pre-filled with data provided by the authentication provider.",
+
+                s4_title: "4. Prohibited Uses",
+                s4_desc: "The following behaviors are prohibited on Kodogram:",
+                s4_li1: "Posting insulting, threatening, harassing, hateful, or discriminatory content",
+                s4_li2: "Producing spam, misleading, fraudulent, or fake content",
+                s4_li3: "Attempting unauthorized access to other users' accounts",
+                s4_li4: "Sharing malicious code, harmful links, or content that may create a security breach",
+                s4_li5: "Uploading content that violates copyright, trademark rights, or third-party rights",
+                s4_li6: "Performing actions that disrupt, overload, or manipulate the technical operation of the platform",
+                s4_li7: "Misusing forum, sharing, learning, or support areas",
+                s4_li8: "Using reserved usernames, impersonating administrators, or imitating others",
+                s4_li9: "Abusing reporting, support requests, or moderation tools in bad faith",
+
+                s5_title: "5. User Content",
+                s5_p1: "Users are responsible for the code they share, forum topics, comments, reports, support content, and all other content they submit. Kodogram reserves the right to review, remove, restrict, archive, or reduce the visibility of content in order to protect community safety and platform integrity.",
+                s5_p2: "The user agrees that, by posting content on Kodogram, they grant a worldwide, royalty-free, limited license for such content to be displayed, reproduced, technically processed, and delivered within the platform.",
+                s5_p3: "The user represents that the content they share on the application is lawful and does not infringe the rights of third parties.",
+
+                s6_title: "6. Moderation and Administrative Powers",
+                s6_p1: "Kodogram may review user accounts, remove content, reduce its visibility, report posts, edit forum topics, review support requests, and temporarily or permanently suspend accounts in order to ensure community safety.",
+                s6_p2: "Administrative actions may be taken for security, legal compliance, abuse prevention, community order, support processes, technical operations, and service quality purposes.",
+
+                s7_title: "7. Account Suspension and Termination",
+                s7_p1: "Kodogram reserves the right to suspend an account, restrict access, or permanently close it in cases of violation of these terms, security risk, fraud, spam, abuse, moderation decisions, or legal necessity.",
+
+                s8_title: "8. Privacy and Data Processing",
+                s8_p1: "How Kodogram collects, uses, and stores user data is explained in the Privacy Policy. Personal data collected during the use of the application is processed under the applicable privacy notice.",
+                s8_p2: "By using the application, you agree to the data processing framework described in the current Privacy Policy.",
+
+                s9_title: "9. Third-Party Services",
+                s9_p1: "Kodogram may rely on third-party services to provide the service. These may include, in particular, Google Firebase, Firebase Authentication, Cloud Firestore, Firebase Cloud Messaging, Firebase Cloud Functions, Apple Sign-In, and Google Sign-In.",
+                s9_p2: "These services may also process data according to their own terms and privacy policies.",
+
+                s10_title: "10. Intellectual Property",
+                s10_p1: "The design, brand, visual identity, software infrastructure, interfaces, and original platform content of the application belong to or are licensed by SS Development and Kodogram unless otherwise stated.",
+                s10_p2: "Users may not reproduce, distribute, or commercially use the Kodogram brand or original elements of the application without permission.",
+
+                s11_title: "11. Changes to the Service",
+                s11_p1: "Kodogram may modify, suspend, remove, or update any feature of the application with or without prior notice. This also applies to features, access methods, membership flows, moderation policies, and administrative tools.",
+
+                s12_title: "12. Limitation of Liability",
+                s12_p1: "Kodogram provides the service as is. It is not guaranteed that the application will operate uninterrupted, error-free, or in a way that satisfies all user expectations. To the extent permitted by applicable law, limited liability may apply for indirect damages arising from technical issues, data loss, third-party service outages, user content, notification delays, or disruptions caused by external services.",
+
+                s13_title: "13. Account and Data Deletion Requests",
+                s13_p1: "Users may request the closure of their accounts and, where appropriate, the deletion of related data. Such requests should be made using the contact address below.",
+                s13_p2: "Some data may be retained for a certain period due to legal obligations, security records, fraud prevention, moderation history, support records, or dispute resolution.",
+
+                s14_title: "14. Changes to These Terms",
+                s14_p1: "Kodogram may update these Terms of Use from time to time. Important changes may be communicated to users within the application, through relevant links, or through a renewed consent process where necessary.",
+
+                s15_title: "15. Contact",
+                s15_p1: "For questions regarding the terms of use, account actions, moderation decisions, or use of the platform, you may contact us at the following address:",
+
+                foot: "SS Development © 2026 Kodogram"
+            }
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem("kodogram_lang", lang);
+            document.documentElement.lang = lang;
+            document.title = translations[lang].page_title;
+
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang][key] !== undefined) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll(".lang-btn").forEach(btn => {
+                btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+            });
+        }
+
+        document.querySelectorAll(".lang-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                setLanguage(btn.getAttribute("data-lang"));
+            });
+        });
+
+        const savedLang = localStorage.getItem("kodogram_lang") || "tr";
+        setLanguage(savedLang);
+    </script>
 </body>
 </html>
